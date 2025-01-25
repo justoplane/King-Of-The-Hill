@@ -128,3 +128,6 @@ $RECYCLE.BIN/
 Library/
 Logs/
 UserSettings/
+
+# temp files
+*/Temp
