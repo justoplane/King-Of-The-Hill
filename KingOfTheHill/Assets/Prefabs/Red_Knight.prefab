@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5356953684652890936}
   - component: {fileID: 3703533944633251127}
   - component: {fileID: 7498649987634619662}
-  - component: {fileID: 7902484226647615355}
   m_Layer: 0
   m_Name: Red_Knight
   m_TagString: Untagged
@@ -102,7 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed6104c651224edfa5df9a277d1af8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 2
+  path: {fileID: 0}
 --- !u!95 &7498649987634619662
 Animator:
   serializedVersion: 7
@@ -125,18 +125,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7902484226647615355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6869305921856833572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84e277e87f424ab42b141361de0c33e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  path: {fileID: 0}
-  speed: 2
-  loop: 1

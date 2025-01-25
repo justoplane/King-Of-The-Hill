@@ -12,11 +12,11 @@ public class Entity : MonoBehaviour
     protected bool active;
     protected Utils.DamageType damageType;
     protected List<Upgrade> upgrades;
-    Entity target;
+    protected Entity target;
 
     public bool canAttack()
     {
-        return true; // TODO: Implement attack cooldown
+        return true; // TODO: Implement attack cooldown 
     }
     public void doAnimation()
     {
