@@ -16,7 +16,6 @@ public class Entity : MonoBehaviour
     protected float attackCooldown;
     protected float lastAttackTime;
 
-
     public bool CanAttack() {
         if (!IsActive()) {
             return false;
