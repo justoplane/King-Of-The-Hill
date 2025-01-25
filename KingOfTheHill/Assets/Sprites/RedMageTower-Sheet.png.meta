@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      RedMageTower-Sheet_0: 7135148466671306080
+      RedMageTower-Sheet_1: 3708933725477876866
+      RedMageTower-Sheet_2: 133689201316357073
+      RedMageTower-Sheet_3: -664243304140145302
+      RedMageTower-Sheet_4: -6793182216042321595
+      RedMageTower-Sheet_5: -233424029703023339
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

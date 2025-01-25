@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BlueMageTower-Sheet_0: 4347695509823918982
+      BlueMageTower-Sheet_1: 517765155842406481
+      BlueMageTower-Sheet_2: -7330629692303020172
+      BlueMageTower-Sheet_3: -292631683398530193
+      BlueMageTower-Sheet_4: 77413364367325228
+      BlueMageTower-Sheet_5: 8434986385070358903
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

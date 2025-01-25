@@ -534,7 +534,24 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BlueKnightTower-Sheet_0: 7362794719085361074
+      BlueKnightTower-Sheet_1: -5354752823822208393
+      BlueKnightTower-Sheet_10: -9043533592764867875
+      BlueKnightTower-Sheet_11: -8263516501308922908
+      BlueKnightTower-Sheet_12: -8078423523483731096
+      BlueKnightTower-Sheet_13: -1210880477901016927
+      BlueKnightTower-Sheet_14: -636370180845901994
+      BlueKnightTower-Sheet_15: -1740194440376697820
+      BlueKnightTower-Sheet_16: 4692875852793976352
+      BlueKnightTower-Sheet_2: 2723548478470281267
+      BlueKnightTower-Sheet_3: -7653766153026192402
+      BlueKnightTower-Sheet_4: 5100966393777500060
+      BlueKnightTower-Sheet_5: -1930057024467900845
+      BlueKnightTower-Sheet_6: -7886761805383091831
+      BlueKnightTower-Sheet_7: 6292117328495844068
+      BlueKnightTower-Sheet_8: -6256684749544531495
+      BlueKnightTower-Sheet_9: -5294333818791138763
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
