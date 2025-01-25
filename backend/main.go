@@ -2,53 +2,52 @@ package main
 
 import (
 	"fmt"
+	"king-of-the-tower/ws"
 	"net/http"
-
-	"github.com/gorilla/websocket"
+	"os"
+	"strconv"
 )
 
-var upgrader = websocket.Upgrader{
-	CheckOrigin: func(r *http.Request) bool {
-		// Allow all origins; you may want to restrict this in production
-		return true
-	},
-}
-
-func wsHandler(w http.ResponseWriter, r *http.Request) {
-	conn, err := upgrader.Upgrade(w, r, nil)
-	if err != nil {
-		http.Error(w, "Could not open websocket connection", http.StatusBadRequest)
-		return
-	}
-	defer conn.Close()
-
-	fmt.Println("Client connected")
-
-	for {
-		messageType, message, err := conn.ReadMessage()
-		if err != nil {
-			fmt.Println("Client disconnected (read error):", err)
-			break
-		}
-
-		fmt.Println("Message received:", string(message))
-
-		err = conn.WriteMessage(messageType, message)
-		if err != nil {
-			fmt.Println("Error sending message:", err)
-			break
-		}
-	}
-
-	fmt.Println("Client disconnected (loop ended)")
-}
-
 func main() {
-	http.HandleFunc("/ws", wsHandler)
+	http.HandleFunc("/ws", ws.WsHandler)
 
-	const port = 8080
-	fmt.Printf("WebSocket server started on :%d\n", port)
+	var port uint32
+
+	args := os.Args[1:]
+	if len(args) > 0 {
+		for i, arg := range args {
+			if arg == "--port" && i+1 < len(args) {
+				portInt, err := strconv.Atoi(args[i+1])
+				if err != nil {
+					fmt.Println("Invalid port number")
+					return
+				}
+				port = uint32(portInt)
+			} else if arg == "-P" && i+1 < len(args) {
+				portInt, err := strconv.Atoi(args[i+1])
+				if err != nil {
+					fmt.Println("Invalid port number")
+					return
+				}
+				port = uint32(portInt)
+			} else if arg == "--help" || arg == "-H" {
+				usage()
+			}
+		}
+	} else {
+		port = 8080
+	}
+
+	fmt.Printf("WebSocket server started on ws://localhost:%d/ws\n", port)
 	if err := http.ListenAndServe(fmt.Sprintf(":%d", port), nil); err != nil {
 		fmt.Println("Error starting server:", err)
 	}
+}
+
+func usage() {
+	fmt.Println("Usage: kott_server [options]")
+	fmt.Println("Options:")
+	fmt.Println("  --port <port>, -P <port> \tSet the port number for the server (default: 8080)")
+	fmt.Println("  --help, -H \t\t\tDisplay this help message")
+	os.Exit(0)
 }
