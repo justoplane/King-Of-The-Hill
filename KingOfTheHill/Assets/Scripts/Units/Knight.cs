@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Knight : Unit
 {
-    // These are values that are specific to the KNIGHT CLASS
+    private Animator anim;
 
     private void Awake()
     {
@@ -23,28 +23,30 @@ public class Knight : Unit
 
     }
 
-    private Animator anim;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-// Start is called once before the first execution of Update after the MonoBehaviour is created
-
-// Update is called once per frame
-void Update()
-{
-    if (Input.GetKeyDown(KeyCode.Space)){
-        if (this.anim != null)
-        {
-            // play Bounce but start at a quarter of the way through
-            anim.SetBool("isWalking", false);
-            anim.SetBool("isAttacking", true);
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)){
+            if (this.anim != null)
+            {
+                // play Bounce but start at a quarter of the way through
+                anim.SetBool("isWalking", false);
+                anim.SetBool("isAttacking", true);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.D)){
+            if (this.anim != null)
+            {
+                // play Bounce but start at a quarter of the way through
+                anim.SetBool("isWalking", true);
+                anim.SetBool("isAttacking", false);
+            }
         }
     }
-    if (Input.GetKeyDown(KeyCode.D)){
-        if (this.anim != null)
-        {
-            // play Bounce but start at a quarter of the way through
-            anim.SetBool("isWalking", true);
-            anim.SetBool("isAttacking", false);
-        }
+
+    void Attack(Tower target) {
+        target.TakeDamage(damage);
     }
-}
 }

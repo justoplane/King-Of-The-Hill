@@ -36,7 +36,7 @@ public class GameState : MonoBehaviour
         // Get the spawn that was clicked, if any and add a unit there.
         // TODO: Implement more paths to correspond to spawns
         GameObject tempSpawn = uiManager.GetSpawnClicked();
-        Debug.Log("passing spawn code");
+        // Debug.Log("passing spawn code");
         if (tempSpawn != null)
         {
             Debug.Log("shoulda spawned");
@@ -55,7 +55,7 @@ public class GameState : MonoBehaviour
         {
             foreach (GameObject unit in player.getUnits())
             {
-                if (unit.GetComponent<Unit>().isActive() && unit.GetComponent<Unit>().canAttack())
+                if (unit.GetComponent<Unit>().IsActive() && unit.GetComponent<Unit>().CanAttack())
                 {
                     // Play attack animation
 
@@ -66,12 +66,12 @@ public class GameState : MonoBehaviour
             }
             foreach (GameObject tower in player.getTowers())
             {
-                if (tower.GetComponent<Tower>().isActive())
+                if (tower.GetComponent<Tower>().IsActive())
                 {
                     // Play attack animation
 
                     // Deal damage to target
-                    tower.GetComponent<Tower>().getTarget().takeDamage(tower.GetComponent<Tower>().getDamage());
+                    tower.GetComponent<Tower>().GetTarget().TakeDamage(tower.GetComponent<Tower>().GetDamage());
                 }
             }
         }
@@ -98,7 +98,7 @@ public class GameState : MonoBehaviour
                 allUnitsDead = true;
                 foreach (GameObject unit in player.getUnits())
                 {
-                    if (unit.GetComponent<Unit>().getHealth() > 0)
+                    if (unit.GetComponent<Unit>().GetHealth() > 0)
                     {
                         allUnitsDead = false;
                         break;
@@ -145,7 +145,7 @@ public class GameState : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Update");
+        // Debug.Log("Update");
         switch (phase) {
             case Utils.Phase.Prep:
                 SimulatePrep();
