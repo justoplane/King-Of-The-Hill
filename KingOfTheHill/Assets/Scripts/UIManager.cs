@@ -1,39 +1,75 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-    public GameState gameState;
+    private Stack<GameObject> clickedSpawnObjects;
+    private bool ready;
+    private void Start()
+    {
+        clickedSpawnObjects = new Stack<GameObject>();
+        ready = false;
+    }
     void Update()
     {
-        // Check for user input (mouse click or touch)
-        if (Input.GetMouseButtonDown(0)) // Left mouse button
+        // Check for left mouse button click
+        if (Input.GetMouseButtonDown(0))
         {
-            // Get the screen position of the click
-            Vector3 screenPosition = Input.mousePosition;
+            // Get the mouse position in world space
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0; // Ensure the z-axis is 0 for 2D
 
-            // Check if the click was on a UI element
-            if (IsPointerOverUI())
-            {
-                Debug.Log($"UI clicked at: {screenPosition}");
-            }
-            else
-            {
-                Debug.Log($"Game world clicked at: {screenPosition}");
+            // Perform a Raycast in 2D
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
-                // If needed, convert screen position to world position
-                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, Camera.main.nearClipPlane));
-                Debug.Log($"World position: {worldPosition}");
+            if (hit.collider != null)
+            {
+                // Check if the clicked object matches the desired object
+                if (hit.collider.gameObject.CompareTag("Spawn"))
+                {
+                    Debug.Log("Spawn clicked");
+                    OnSpawnClicked(hit.collider.gameObject);
+                }
+                else if (hit.collider.gameObject.CompareTag("Ready"))
+                {
+                    Debug.Log("Ready clicked");
+                    OnReadyClicked(hit.collider.gameObject);
+                }
             }
         }
     }
 
-    /// <summary>
-    /// Checks if the pointer is currently over a UI element.
-    /// </summary>
-    /// <returns>True if the pointer is over a UI element, false otherwise.</returns>
-    private bool IsPointerOverUI()
+    void OnSpawnClicked(GameObject clickedObject)
     {
-        return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+        // Handle what happens when the spawn is clicked
+        clickedSpawnObjects.Push(clickedObject);
+
+    }
+
+    public GameObject GetSpawnClicked()
+    {
+        if (clickedSpawnObjects.Count == 0)
+        {
+            return null;
+        }
+        return clickedSpawnObjects.Pop();
+    }
+
+    void OnReadyClicked(GameObject clickedObject)
+    {
+        // Handle what happens when the ready button is clicked
+        ready = true;
+
+    }
+
+    public bool GetReadyClicked()
+    {
+        if (ready)
+        {
+            ready = !ready;
+            return !ready;
+        }
+        return ready;
     }
 }
