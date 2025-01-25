@@ -130,4 +130,4 @@ Logs/
 UserSettings/
 
 # temp files
-*/Temp
+**/Temp/*
