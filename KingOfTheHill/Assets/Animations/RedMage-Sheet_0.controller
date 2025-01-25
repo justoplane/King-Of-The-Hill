@@ -32,7 +32,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueMageAttack
+  m_Name: RedMageAttack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a7c76024a87a24bd0a0307ca5c7618f5, type: 2}
+  m_Motion: {fileID: 7400000, guid: e78d2e0b6396a42f1b6c2b6b8fd5b8c0, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -83,7 +83,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueMage-Sheet_0
+  m_Name: RedMage-Sheet_0
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isAttacking
@@ -122,7 +122,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 3080519174716356571}
-    m_Position: {x: 470, y: 220, z: 0}
+    m_Position: {x: 440, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3754689144445336747}
     m_Position: {x: 440, y: 10, z: 0}
@@ -146,7 +146,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueMage
+  m_Name: RedMageMove
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -160,7 +160,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ad868f8b96d2541b1abaf4eae3f11def, type: 2}
+  m_Motion: {fileID: 7400000, guid: 56cc7ab15a97d47e5be763f436bd698d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -213,7 +213,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7ee40588be41749cdaa16fd57123c4f4, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0c18a5f73224043889d754c554bd2b43, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
