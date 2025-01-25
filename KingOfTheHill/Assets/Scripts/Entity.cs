@@ -5,12 +5,17 @@ public class Entity : MonoBehaviour
 {
     protected int health;
     protected int damage;
+
+    protected float attackSpeed;
+    protected float timeSinceLastAttack;
+    protected int range;
     protected bool active;
     protected Utils.DamageType damageType;
     protected List<Upgrade> upgrades;
     protected Entity target;
     protected float attackCooldown;
     protected float lastAttackTime;
+
 
     public bool CanAttack() {
         if (!IsActive()) {
@@ -43,6 +48,10 @@ public class Entity : MonoBehaviour
 
     public void TakeDamage(int damageTaken) {
         health -= damageTaken;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public int GetHealth() {
