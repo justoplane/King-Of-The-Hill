@@ -14,6 +14,10 @@ public class Entity : MonoBehaviour
     protected List<Upgrade> upgrades;
     Entity target;
 
+    public bool canAttack()
+    {
+        return true; // TODO: Implement attack cooldown
+    }
     public void doAnimation()
     {
         // Play attack animation

@@ -1,8 +1,9 @@
+using System.IO;
 using UnityEngine;
 
-public class Path1 : MonoBehaviour
+public class TestPath : MonoBehaviour
 {
-    public static Transform[] sharedWaypoints; // Shared array to store waypoints
+    public Path path; // Reference to the ScriptableObject defining the path
     public float speed = 2f; // Speed of movement
     public bool loop = true; // Whether the path should loop
 
@@ -10,10 +11,10 @@ public class Path1 : MonoBehaviour
 
     void Update()
     {
-        if (sharedWaypoints == null || sharedWaypoints.Length == 0) return; // No waypoints to follow
+        if (path == null || path.waypoints == null || path.waypoints.Length == 0) return; // No waypoints to follow
 
         // Move towards the current waypoint
-        Transform targetWaypoint = sharedWaypoints[currentWaypointIndex];
+        Transform targetWaypoint = path.waypoints[currentWaypointIndex];
         Vector3 targetPosition = targetWaypoint.position;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
@@ -22,7 +23,7 @@ public class Path1 : MonoBehaviour
         {
             currentWaypointIndex++; // Move to the next waypoint
 
-            if (currentWaypointIndex >= sharedWaypoints.Length)
+            if (currentWaypointIndex >= path.waypoints.Length)
             {
                 if (loop)
                 {
