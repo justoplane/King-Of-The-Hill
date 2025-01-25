@@ -17,11 +17,10 @@ public class MageTower : Tower
     void Update()
     {
         timeSinceLastAttack += Time.deltaTime;
-        Debug.Log(canAttack());
-        if(active == true && unitsInRange.Count > 0 && canAttack()){
+        if(active == true && unitsInRange.Count > 0 && CanAttack()){
             if(target != null){
                 timeSinceLastAttack = 0;
-                target.takeDamage(getDamage());
+                target.TakeDamage(GetDamage());
             }
         }
     }

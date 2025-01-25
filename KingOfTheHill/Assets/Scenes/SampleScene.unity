@@ -746,7 +746,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paths:
   - {fileID: 1477860980}
-  spawner: {fileID: 0}
+  spawner: {fileID: 1272506582}
+  uiManager: {fileID: 905758638}
 --- !u!4 &689547889
 Transform:
   m_ObjectHideFlags: 0
@@ -1130,38 +1131,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1818547500 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6869305921856833572, guid: f70169f7eeb014db7a3ddcb18c23a153, type: 3}
-  m_PrefabInstance: {fileID: 7596366638986531805}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1818547507
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1818547500}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 5000
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1001 &1839041666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1276,14 +1245,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5259511700063969371, guid: f70169f7eeb014db7a3ddcb18c23a153, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5259511700063969371, guid: f70169f7eeb014db7a3ddcb18c23a153, type: 3}
-      propertyPath: m_EdgeRadius
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3703533944633251127, guid: f70169f7eeb014db7a3ddcb18c23a153, type: 3}
       propertyPath: path
       value: 
@@ -1307,10 +1268,6 @@ PrefabInstance:
     - target: {fileID: 6869305921856833572, guid: f70169f7eeb014db7a3ddcb18c23a153, type: 3}
       propertyPath: m_Name
       value: Red_Knight (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6869305921856833572, guid: f70169f7eeb014db7a3ddcb18c23a153, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8229571310365414846, guid: f70169f7eeb014db7a3ddcb18c23a153, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1355,10 +1312,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6869305921856833572, guid: f70169f7eeb014db7a3ddcb18c23a153, type: 3}
-      insertIndex: 4
-      addedObject: {fileID: 1818547507}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f70169f7eeb014db7a3ddcb18c23a153, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
