@@ -4,9 +4,11 @@ using System.Collections;
 public class Knight : Unit
 {   
     private Animator anim;
-    public Knight(){
-        
+
+    public Knight(Path path) : base(path)
+    {
     }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

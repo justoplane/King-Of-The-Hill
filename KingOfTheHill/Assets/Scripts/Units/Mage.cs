@@ -5,7 +5,7 @@ public class Mage : Unit
 {
     private Animator anim;
     public GameObject firevballSpawnPosObj;
-    public Mage(){
+    public Mage(Path path) : base(path) {
         
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created

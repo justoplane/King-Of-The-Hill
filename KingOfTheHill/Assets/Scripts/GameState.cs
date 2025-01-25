@@ -3,20 +3,44 @@ using System.Collections.Generic;
 
 public class GameState : MonoBehaviour
 {
+    public Path[] paths;
     int floorNumber;
     int waveNumber;
     Utils.Phase phase;
     Player activePlayer;
     List<Player> players;
-    Transform spawnLocation;
     List<Entity> checkpoints;
     bool finishedCombat;
     bool allUnitsDead;
     bool allCheckpointsReached;
 
+    private void Start()
+    {
+        floorNumber = 0;
+        waveNumber = 0;
+        phase = Utils.Phase.Prep;
+        players = new List<Player>
+        {
+            new Player(Utils.Role.Attacker),
+            new Player(Utils.Role.Defender),
+        };
+        activePlayer = players[0];
+
+    }
+
     void SimulatePrep()
     {
         // Simulate preparation phase
+        // Janky manual spawning...
+        for (int i = 0; i < 5; i++)
+        {
+            players[0].addUnit(Utils.ParentObject.Knight, paths[0]);
+        }
+        // Spawn troops
+        for (int i = 0; i < players.Count; i++)
+        {
+            players[1].addUnit(Utils.ParentObject.Knight, paths[1]);
+        }
     }
     void SimulateCombat()
     {
@@ -25,7 +49,7 @@ public class GameState : MonoBehaviour
         {
             foreach (Unit unit in player.getUnits())
             {
-                if (unit.isActive())
+                if (unit.isActive() && unit.canAttack())
                 {
                     // Play attack animation
                     
@@ -45,17 +69,20 @@ public class GameState : MonoBehaviour
             }
         }
 
-        // Move units
+        // Move units and check if last checkpoint is reached
         foreach (Player player in players)
         {
             foreach (Unit unit in player.getUnits())
             {
                 // Move unit towards target on path
+                if (unit.Move())
+                {
+                    allCheckpointsReached = true;
+                    break;
+                }
             }
         }
 
-        // Update losing/winning conditions
-        // If all checkpoints are destroyed
         // If all units are dead
         foreach (Player player in players)
         {
@@ -71,27 +98,27 @@ public class GameState : MonoBehaviour
                     }
                 }
             }
-            if (player.getRole() == Utils.Role.Defender)
-            {
-                allCheckpointsReached = true;
-                foreach (Entity checkpoint in checkpoints)
-                {
-                    if (checkpoint.getHealth() > 0)
-                    {
-                        allCheckpointsReached = false;
-                        break;
-                    }
-                }
-            }
         }
-
-
+        // Set flags for finished combat
+        if (allUnitsDead || allCheckpointsReached)
+        {
+            finishedCombat = true;
+        }
     }
 
     void resolveCombat() 
     {
         // check what losing/winning conditions has been met
-
+        if (allUnitsDead)
+        {
+            // Defenders win
+            WinWave(Utils.Role.Defender);
+        }
+        else if (allCheckpointsReached)
+        {
+            // Attackers win
+            WinWave(Utils.Role.Attacker);
+        }
     }
 
     void SimulateReward()

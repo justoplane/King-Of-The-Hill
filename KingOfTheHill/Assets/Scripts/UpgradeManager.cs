@@ -13,14 +13,10 @@ public struct Upgrade
     public int upgradeNumber;
     public bool unlocked;
 }
-public class UpgradeManager
+public static class UpgradeManager
 {
-    UpgradeManager() 
-    { 
-        
-    }
 
-    public Upgrade GetUpgradeInfo(Utils.ParentObject type, int pathNumber, int upgradeNumber)
+    public static Upgrade GetUpgradeInfo(Utils.ParentObject type, int pathNumber, int upgradeNumber)
     {
         // 
         switch (type)
@@ -38,7 +34,7 @@ public class UpgradeManager
         }
     }
 
-    Upgrade GetKnightUpgrade(int pathNumber, int upgradeNumber)
+    static Upgrade GetKnightUpgrade(int pathNumber, int upgradeNumber)
     {
         foreach (Upgrade upgrade in KnightUpgrades.upgradeList)
         {
@@ -49,7 +45,7 @@ public class UpgradeManager
         }
         return KnightUpgrades.upgradeList[0];
     }
-    Upgrade GetMageUpgrade(int pathNumber, int upgradeNumber)
+    static Upgrade GetMageUpgrade(int pathNumber, int upgradeNumber)
     {
         foreach (Upgrade upgrade in MageUpgrades.upgradeList)
         {
@@ -61,7 +57,7 @@ public class UpgradeManager
         return MageUpgrades.upgradeList[0];
     }
 
-    Upgrade GetKnightTowerUpgrade(int pathNumber, int upgradeNumber)
+    static Upgrade GetKnightTowerUpgrade(int pathNumber, int upgradeNumber)
     {
         foreach (Upgrade upgrade in KnightTowerUpgrades.upgradeList)
         {
@@ -73,7 +69,7 @@ public class UpgradeManager
         return KnightTowerUpgrades.upgradeList[0];
     }
 
-    Upgrade GetMageTowerUpgrade(int pathNumber, int upgradeNumber)
+    static Upgrade GetMageTowerUpgrade(int pathNumber, int upgradeNumber)
     {
         foreach (Upgrade upgrade in MageTowerUpgrades.upgradeList)
         {
