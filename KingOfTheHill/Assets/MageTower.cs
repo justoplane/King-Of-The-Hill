@@ -9,15 +9,15 @@ public class MageTower : Tower
     void Start()
     {
         unitsInRange = new List<Unit>();
-        damage = 1;
-        attackSpeed = 5;
+        damage = 40;
+        lastAttackTime = 0;
+        attackCooldown = 2;
         animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeSinceLastAttack += Time.deltaTime;
         if(active == true && unitsInRange.Count > 0 && CanAttack()){
             if(target != null){
                 animator.SetBool("isAttacking", true);
