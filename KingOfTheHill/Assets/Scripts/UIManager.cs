@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
+    public GameState gameState;
     void Update()
     {
         // Check for user input (mouse click or touch)
