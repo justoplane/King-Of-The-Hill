@@ -17,7 +17,6 @@ public class Knight : Unit
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)){
-
             if (this.anim != null)
             {
                 // play Bounce but start at a quarter of the way through
