@@ -1,15 +1,45 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
+	"os"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/gorilla/websocket"
 )
 
 func main() {
-	serverURL := "ws://localhost:8080/ws" // Replace with your server's address if different
+	var port uint32
+	send := true
+
+	args := os.Args[1:]
+	if len(args) > 0 {
+		for i, arg := range args {
+			switch arg {
+			case "--port", "-P":
+				portInt, err := strconv.Atoi(args[i+1])
+				if err != nil {
+					fmt.Println("Invalid port number")
+					return
+				}
+				port = uint32(portInt)
+			case "--send", "-S":
+				send = true
+			case "--recv", "-R":
+				send = false
+			case "--help", "-H":
+				usage()
+			}
+		}
+	} else {
+		port = 8080
+	}
+
+	serverURL := fmt.Sprintf("ws://localhost:%d/ws", port)
 
 	// Connect to the WebSocket server
 	conn, _, err := websocket.DefaultDialer.Dial(serverURL, nil)
@@ -20,39 +50,57 @@ func main() {
 
 	fmt.Println("Connected to WebSocket server")
 
-	// Sending a message to the server
-	message := "Hello, WebSocket Server!"
-	fmt.Printf("Sending: %s\n", message)
-	err = conn.WriteMessage(websocket.TextMessage, []byte(message))
-	if err != nil {
-		log.Fatalf("Failed to send message: %v", err)
-	}
+	if send {
+		for {
+			for i := 0; i < len(testMessages); i++ {
+				testMessage := testMessages[i]
+				fmt.Printf("Sending: %s\n", testMessage)
+				testMessageBytes, err := json.Marshal(testMessage)
+				if err != nil {
+					log.Fatalf("Failed to marshal message: %v", err)
+				}
+				err = conn.WriteMessage(websocket.TextMessage, testMessageBytes)
+				if err != nil {
+					log.Fatalf("Failed to send message: %v", err)
+				}
 
-	// Listening for a response from the server
-	_, response, err := conn.ReadMessage()
-	if err != nil {
-		log.Fatalf("Failed to read response: %v", err)
-	}
-	fmt.Printf("Received from server: %s\n", response)
+				// Reading the response
+				// _, response, err := conn.ReadMessage()
+				// if err != nil {
+				// 	log.Fatalf("Failed to read response: %v", err)
+				// }
+				// fmt.Printf("Received from server: %s\n", response)
 
-	// Optional: Test multiple messages
-	for i := 0; i < 5; i++ {
-		testMessage := fmt.Sprintf("Test message %d", i+1)
-		fmt.Printf("Sending: %s\n", testMessage)
-		err = conn.WriteMessage(websocket.TextMessage, []byte(testMessage))
-		if err != nil {
-			log.Fatalf("Failed to send message: %v", err)
+				time.Sleep(1 * time.Second) // Optional delay between messages
+			}
+
+			// get input from user to continue or stop
+			fmt.Println("Send again? (y/n)")
+			var input string
+			fmt.Scanln(&input)
+			if strings.ToLower(string(input[0])) != "y" {
+				break
+			}
 		}
-
-		// Reading the response
-		_, response, err = conn.ReadMessage()
-		if err != nil {
-			log.Fatalf("Failed to read response: %v", err)
+	} else {
+		for {
+			_, message, err := conn.ReadMessage()
+			if err != nil {
+				log.Fatalf("Failed to read message: %v", err)
+			}
+			fmt.Printf("Received: %s\n", message)
 		}
-		fmt.Printf("Received from server: %s\n", response)
-
-		time.Sleep(1 * time.Second) // Optional delay between messages
 	}
 
-	fmt.Println("Testing completed, closing connection")
+	conn.Close()
+}
+
+func usage() {
+	fmt.Println("Usage: tester [options]")
+	fmt.Println("Options:")
+	fmt.Println("  --port <port>, -P <port> \tSet the port number for the server (default: 8080)")
+	fmt.Println("  --send, -S \t\t\tSend messages to the server")
+	fmt.Println("  --recv, -R \t\t\tReceive messages from the server")
+	fmt.Println("  --help, -H \t\t\tDisplay this help message")
+	os.Exit(0)
 }
