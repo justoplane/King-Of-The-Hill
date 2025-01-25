@@ -1,0 +1,365 @@
+fileFormatVersion: 2
+guid: 8d8fd3ac109c74794899f496ff83cbbb
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 0
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BlueMage-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      physicsShape:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c907154f8c854cd196e75e9eba78a9e
+      internalID: 1507983358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueMage-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      physicsShape:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32d296bc1e50d46f1815efd75075acc4
+      internalID: -470369370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueMage-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      physicsShape:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e29ed61bfee84665a8f2e6094c7f42f
+      internalID: -2105261317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueMage-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      physicsShape:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ea16a20acf6a4727aff8a098a159d6e
+      internalID: -2096258619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueMage-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      physicsShape:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2feace73d20e4ca68ad79ef51601880
+      internalID: -1542883221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueMage-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      physicsShape:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9524cbaa72a74423c8937e0fa3eeacbf
+      internalID: -587066236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueMage-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      physicsShape:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 650a0a87181f74c78a5624da38cebe5c
+      internalID: 569293372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueMage-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      physicsShape:
+      - - {x: 0, y: -20}
+        - {x: 24, y: 0}
+        - {x: 0, y: 20}
+        - {x: -24, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b44decf030aa4506938dc038d4de1dd
+      internalID: 1022487979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: bb3b4b45675764453aeb48b33132d5ca
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BlueMage-Sheet_0: 1507983358
+      BlueMage-Sheet_1: -470369370
+      BlueMage-Sheet_2: -2105261317
+      BlueMage-Sheet_3: -2096258619
+      BlueMage-Sheet_4: -1542883221
+      BlueMage-Sheet_5: -587066236
+      BlueMage-Sheet_6: 569293372
+      BlueMage-Sheet_7: 1022487979
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
