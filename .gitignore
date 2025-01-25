@@ -123,3 +123,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# choose the correct folders
+Library/
+Logs/
+UserSettings/
