@@ -53,10 +53,14 @@ public class Unit : Entity
 
         // Send movement event to the server
         if (ServerManager.Instance != null && ServerManager.Instance.WsClient != null) {
-            Debug.Log("Sending move event");
+            Coordinate position = new Coordinate { 
+                x = transform.position.x, 
+                y = transform.position.y, 
+                rotation = 0.0f
+            };
             Task.Run(async () => {
                 try {
-                    await ServerManager.Instance.WsClient.SendUnitMove(this);
+                    await ServerManager.Instance.WsClient.SendUnitMove(this.Id, position);
                 } catch (Exception ex) {
                     Debug.LogError($"Error sending move event: {ex.Message}");
                 }

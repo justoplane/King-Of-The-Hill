@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class Entity : MonoBehaviour
 {
+    public uint Id;
+    public static uint NumEntities = 0;
     protected int health;
     protected int damage;
     protected bool active;
@@ -11,6 +13,10 @@ public class Entity : MonoBehaviour
     protected Entity target;
     protected float attackCooldown;
     protected float lastAttackTime;
+
+    public Entity() {
+        Id = NumEntities++;
+    }
 
     public bool CanAttack() {
         if (!IsActive()) {
