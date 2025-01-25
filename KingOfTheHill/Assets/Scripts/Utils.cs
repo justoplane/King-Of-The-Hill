@@ -32,4 +32,10 @@ public class Utils
         Close,
     }
 
+    public enum Role
+    { 
+        Attacker,
+        Defender,
+    }
+
 }
