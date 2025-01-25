@@ -11,6 +11,7 @@ const (
 	UnitPlaced       MessageType = "unitPlaced"
 	UnitAttack       MessageType = "unitAttack"
 	UnitDeath        MessageType = "unitDeath"
+	UnitMove         MessageType = "unitMove"
 	TowerPlaced      MessageType = "towerPlaced"
 	TowerAttack      MessageType = "towerAttack"
 	BarrierBroken    MessageType = "barrierBroken"
@@ -33,6 +34,10 @@ type UnitAttackData struct {
 }
 
 type UnitDeathData struct {
+	Unit game.Unit `json:"unit"`
+}
+
+type UnitMoveData struct {
 	Unit game.Unit `json:"unit"`
 }
 

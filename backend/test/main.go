@@ -64,14 +64,7 @@ func main() {
 					log.Fatalf("Failed to send message: %v", err)
 				}
 
-				// Reading the response
-				// _, response, err := conn.ReadMessage()
-				// if err != nil {
-				// 	log.Fatalf("Failed to read response: %v", err)
-				// }
-				// fmt.Printf("Received from server: %s\n", response)
-
-				time.Sleep(1 * time.Second) // Optional delay between messages
+				time.Sleep(250 * time.Millisecond) // Optional delay between messages
 			}
 
 			// get input from user to continue or stop
