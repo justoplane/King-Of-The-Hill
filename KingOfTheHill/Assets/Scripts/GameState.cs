@@ -13,6 +13,8 @@ public class GameState : MonoBehaviour
     bool finishedCombat;
     bool allUnitsDead;
     bool allCheckpointsReached;
+    [SerializeField]
+    GameObject prefab;
 
     private void Start()
     {
@@ -21,10 +23,10 @@ public class GameState : MonoBehaviour
         phase = Utils.Phase.Prep;
         players = new List<Player>
         {
-            new Player(Utils.Role.Attacker),
-            new Player(Utils.Role.Defender),
+            // new Player(Utils.Role.Attacker),
+            // new Player(Utils.Role.Defender),
         };
-        activePlayer = players[0];
+        // activePlayer = players[0];
 
     }
 
@@ -138,23 +140,23 @@ public class GameState : MonoBehaviour
 
     private void Update()
     {
-        switch (phase) {
-            case Utils.Phase.Prep:
-                SimulatePrep();
-                break;
-            case Utils.Phase.Combat:
-                SimulateCombat();
-                if (finishedCombat)
-                {
-                    resolveCombat();
-                }
-                break;
-            case Utils.Phase.Reward:
-                SimulateReward();
-                break;
-            case Utils.Phase.Upgrade:
-                SimulateUpgrade();
-                break;
-        }
+        // switch (phase) {
+        //     case Utils.Phase.Prep:
+        //         SimulatePrep();
+        //         break;
+        //     case Utils.Phase.Combat:
+        //         SimulateCombat();
+        //         if (finishedCombat)
+        //         {
+        //             resolveCombat();
+        //         }
+        //         break;
+        //     case Utils.Phase.Reward:
+        //         SimulateReward();
+        //         break;
+        //     case Utils.Phase.Upgrade:
+        //         SimulateUpgrade();
+        //         break;
+        // }
     }
 }

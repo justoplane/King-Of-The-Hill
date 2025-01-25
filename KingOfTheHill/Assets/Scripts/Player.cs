@@ -36,10 +36,12 @@ public class Player : MonoBehaviour
         switch (type)
         {
             case Utils.ParentObject.Knight:
-                units.Add(new Knight(path));
+                // GameObject newKnight = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+                // newKnight.GetComponent<Knight>().printSomething();
+                //units.Add(new Knight());
                 break;
             case Utils.ParentObject.Mage:
-                units.Add(new Mage(path));
+                units.Add(new Mage());
                 break;
             default:
                 break;

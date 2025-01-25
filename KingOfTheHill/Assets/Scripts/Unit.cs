@@ -8,10 +8,10 @@ public class Unit : Entity
     public float speed = 2f; // Speed of movement
     private int currentWaypointIndex = 0;
 
-    public Unit(Path path) 
-    {
-        this.path = path;
-    }
+    // public Unit(Path path) 
+    // {
+    //     this.path = path;
+    // }
 
 
     public bool Move()

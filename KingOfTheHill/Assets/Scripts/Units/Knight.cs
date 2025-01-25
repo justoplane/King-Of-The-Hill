@@ -5,14 +5,11 @@ public class Knight : Unit
 {   
     private Animator anim;
 
-    public Knight(Path path) : base(path)
-    {
-    }
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         this.anim = gameObject.GetComponent<Animator>();
+        Debug.Log(name);
     }
 
     // Update is called once per frame
@@ -34,5 +31,9 @@ public class Knight : Unit
                 anim.SetBool("isAttacking", false);
             }
         }
+    }
+
+    public void printSomething(){
+        Debug.Log("Knight Printed Something!");
     }
 }
