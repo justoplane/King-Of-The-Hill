@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class Knight : Unit
-{   
+public class Mage : Unit
+{
     private Animator anim;
-    public Knight(){
+    public Mage(){
         
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
