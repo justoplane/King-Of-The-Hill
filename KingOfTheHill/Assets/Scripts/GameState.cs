@@ -14,6 +14,7 @@ public class GameState : MonoBehaviour
     bool allUnitsDead;
     bool allCheckpointsReached;
     public Spawner spawner;
+    public UIManager uiManager;
 
     private void Start()
     {
@@ -32,18 +33,20 @@ public class GameState : MonoBehaviour
     void SimulatePrep()
     {
         // Simulate preparation phase
-        // Janky manual spawning...
-        for (int i = 0; i < 5; i++)
+        // Get the spawn that was clicked, if any and add a unit there.
+        // TODO: Implement more paths to correspond to spawns
+        GameObject tempSpawn = uiManager.GetSpawnClicked();
+        Debug.Log("passing spawn code");
+        if (tempSpawn != null)
         {
-            Debug.Log(spawner);
+            Debug.Log("shoulda spawned");
             players[0].addUnit(spawner.GetPrefabInstance(Utils.ParentObject.Knight, players[0].getRole(), paths[0]));
         }
-        // Spawn troops
-        for (int i = 0; i < players.Count; i++)
+
+        if (uiManager.GetReadyClicked()) 
         {
-            //players[1].addUnit(spawner, Utils.ParentObject.Knight, paths[1]);
+            phase = Utils.Phase.Combat;
         }
-        phase = Utils.Phase.Combat;
     }
     void SimulateCombat()
     {
@@ -142,6 +145,7 @@ public class GameState : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Update");
         switch (phase) {
             case Utils.Phase.Prep:
                 SimulatePrep();
