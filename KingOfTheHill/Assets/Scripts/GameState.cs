@@ -36,7 +36,7 @@ public class GameState : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             Debug.Log(spawner);
-            players[0].addUnit(spawner.GetPrefabInstance(Utils.ParentObject.Knight, players[0].getRole(), paths[0]));
+            //players[0].addUnit(spawner.GetPrefabInstance(Utils.ParentObject.Knight, players[0].getRole(), paths[0]));
         }
         // Spawn troops
         for (int i = 0; i < players.Count; i++)

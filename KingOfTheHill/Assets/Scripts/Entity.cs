@@ -7,7 +7,7 @@ public class Entity : MonoBehaviour
     protected int health;
     protected int damage;
     protected float attackSpeed;
-    protected double timeSinceLastAttack;
+    protected float timeSinceLastAttack;
     protected int range;
     protected bool active;
     protected Utils.DamageType damageType;
@@ -16,7 +16,8 @@ public class Entity : MonoBehaviour
 
     public bool canAttack()
     {
-        return true; // TODO: Implement attack cooldown 
+        Debug.Log(timeSinceLastAttack);
+        return timeSinceLastAttack > (attackSpeed * 0.75); // TODO: Implement attack cooldown 
     }
     public void doAnimation()
     {
@@ -42,6 +43,10 @@ public class Entity : MonoBehaviour
     public void takeDamage(int damageTaken)
     {
         health -= damageTaken;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public int getHealth()
