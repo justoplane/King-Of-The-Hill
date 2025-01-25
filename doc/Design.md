@@ -77,3 +77,31 @@ The following tasks will need to be completed:
 * Active
 * Unlocked
 
+### Messages to/from the server
+* Unit placed
+    - Which player placed it? - can be inferred
+    - What type of unit?
+    - Where was it placed?
+* Tower placed
+    - Which player placed it? - can be inferred
+    - What type of unit?
+    - Where was it placed?
+* Unit attack
+    - Which unit?
+    - What type of unit?
+    - Which entity was it aiming at?
+* Tower attack
+    - Which tower?
+    - What type of tower?
+    - Which entity was it aiming at?
+* Game State Sync
+    - Alternate which player initiates
+    - Contains all the data in a GameState object
+* Abilities
+    - TBD. abilities not implemented yet
+* Threshold crossed
+    - is this necessary?
+* Unit death
+    - Which unit?
+* Barrier broken
+    - Which barrier?
