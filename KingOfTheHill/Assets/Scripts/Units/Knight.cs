@@ -1,16 +1,29 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Knight : Unit
-{   
+{
     private Animator anim;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
+        name = "Knight";
+        health = 100;
+        damage = 10;
+        attackSpeed = 1;
+        timeSinceLastAttack = 0;
+        range = 1;
+        active = true;
+        damageType = Utils.DamageType.Physical;
+        upgrades = new List<Upgrade>();
+        target = null;
+
         this.anim = gameObject.GetComponent<Animator>();
-        Debug.Log(name);
+
     }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     // Update is called once per frame
     void Update()
@@ -33,7 +46,7 @@ public class Knight : Unit
         }
     }
 
-    public void printSomething(){
-        Debug.Log("Knight Printed Something!");
+    void Attack(Tower target) {
+        target.TakeDamage(damage);
     }
 }

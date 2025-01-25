@@ -13,8 +13,8 @@ public class GameState : MonoBehaviour
     bool finishedCombat;
     bool allUnitsDead;
     bool allCheckpointsReached;
-    [SerializeField]
-    GameObject prefab;
+    public Spawner spawner;
+    public UIManager uiManager;
 
     private void Start()
     {
@@ -23,25 +23,29 @@ public class GameState : MonoBehaviour
         phase = Utils.Phase.Prep;
         players = new List<Player>
         {
-            // new Player(Utils.Role.Attacker),
-            // new Player(Utils.Role.Defender),
+            new Player(Utils.Role.Attacker),
+            new Player(Utils.Role.Defender),
         };
-        // activePlayer = players[0];
+        activePlayer = players[0];
 
     }
 
     void SimulatePrep()
     {
         // Simulate preparation phase
-        // Janky manual spawning...
-        for (int i = 0; i < 5; i++)
+        // Get the spawn that was clicked, if any and add a unit there.
+        // TODO: Implement more paths to correspond to spawns
+        GameObject tempSpawn = uiManager.GetSpawnClicked();
+        // Debug.Log("passing spawn code");
+        if (tempSpawn != null)
         {
-            players[0].addUnit(Utils.ParentObject.Knight, paths[0]);
+            Debug.Log("shoulda spawned");
+            players[0].addUnit(spawner.GetPrefabInstance(Utils.ParentObject.Knight, players[0].getRole(), paths[0]));
         }
-        // Spawn troops
-        for (int i = 0; i < players.Count; i++)
+
+        if (uiManager.GetReadyClicked()) 
         {
-            players[1].addUnit(Utils.ParentObject.Knight, paths[1]);
+            phase = Utils.Phase.Combat;
         }
     }
     void SimulateCombat()
@@ -49,24 +53,25 @@ public class GameState : MonoBehaviour
         // Simulate combat between all players
         foreach (Player player in players)
         {
-            foreach (Unit unit in player.getUnits())
+            foreach (GameObject unit in player.getUnits())
             {
-                if (unit.isActive() && unit.canAttack())
-                {
-                    // Play attack animation
-                    
-                    // Deal damage to target
-                    unit.getTarget().takeDamage(unit.getDamage());
-                }
-            }
-            foreach (Tower tower in player.getTowers())
-            {
-                if (tower.isActive())
+                if (unit.GetComponent<Unit>().IsActive() && unit.GetComponent<Unit>().CanAttack())
                 {
                     // Play attack animation
 
                     // Deal damage to target
-                    tower.getTarget().takeDamage(tower.getDamage());
+                    // TODO Add null check for target
+                    //unit.GetComponent<Unit>().getTarget().takeDamage(unit.GetComponent<Unit>().getDamage());
+                }
+            }
+            foreach (GameObject tower in player.getTowers())
+            {
+                if (tower.GetComponent<Tower>().IsActive())
+                {
+                    // Play attack animation
+
+                    // Deal damage to target
+                    tower.GetComponent<Tower>().GetTarget().TakeDamage(tower.GetComponent<Tower>().GetDamage());
                 }
             }
         }
@@ -74,10 +79,10 @@ public class GameState : MonoBehaviour
         // Move units and check if last checkpoint is reached
         foreach (Player player in players)
         {
-            foreach (Unit unit in player.getUnits())
+            foreach (GameObject unit in player.getUnits())
             {
                 // Move unit towards target on path
-                if (unit.Move())
+                if (unit.GetComponent<Unit>().Move())
                 {
                     allCheckpointsReached = true;
                     break;
@@ -91,9 +96,9 @@ public class GameState : MonoBehaviour
             if (player.getRole() == Utils.Role.Attacker)
             {
                 allUnitsDead = true;
-                foreach (Unit unit in player.getUnits())
+                foreach (GameObject unit in player.getUnits())
                 {
-                    if (unit.getHealth() > 0)
+                    if (unit.GetComponent<Unit>().GetHealth() > 0)
                     {
                         allUnitsDead = false;
                         break;
@@ -140,23 +145,24 @@ public class GameState : MonoBehaviour
 
     private void Update()
     {
-        // switch (phase) {
-        //     case Utils.Phase.Prep:
-        //         SimulatePrep();
-        //         break;
-        //     case Utils.Phase.Combat:
-        //         SimulateCombat();
-        //         if (finishedCombat)
-        //         {
-        //             resolveCombat();
-        //         }
-        //         break;
-        //     case Utils.Phase.Reward:
-        //         SimulateReward();
-        //         break;
-        //     case Utils.Phase.Upgrade:
-        //         SimulateUpgrade();
-        //         break;
-        // }
+        // Debug.Log("Update");
+        switch (phase) {
+            case Utils.Phase.Prep:
+                SimulatePrep();
+                break;
+            case Utils.Phase.Combat:
+                SimulateCombat();
+                if (finishedCombat)
+                {
+                    resolveCombat();
+                }
+                break;
+            case Utils.Phase.Reward:
+                SimulateReward();
+                break;
+            case Utils.Phase.Upgrade:
+                SimulateUpgrade();
+                break;
+        }
     }
 }

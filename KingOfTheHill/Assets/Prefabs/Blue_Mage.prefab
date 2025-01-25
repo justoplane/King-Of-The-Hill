@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1507983358, guid: 8d8fd3ac109c74794899f496ff83cbbb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a221e280356424708ae0ca879a3e25d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  firevballSpawnPosObj: {fileID: 0}
+  speed: 2
+  path: {fileID: 0}
 --- !u!95 &5025918686106159083
 Animator:
   serializedVersion: 7
