@@ -4,6 +4,7 @@ using System.Collections;
 public class Mage : Unit
 {
     private Animator anim;
+    public GameObject firevballSpawnPosObj;
     public Mage(){
         
     }
@@ -11,6 +12,7 @@ public class Mage : Unit
     void Start()
     {
         this.anim = gameObject.GetComponent<Animator>();
+        this.firevballSpawnPosObj = transform.Find("Fireball_Spawn_Loc").gameObject;
     }
 
     // Update is called once per frame
