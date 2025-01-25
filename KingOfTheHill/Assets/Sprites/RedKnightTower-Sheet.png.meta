@@ -534,7 +534,24 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      RedKnightTower-Sheet_0: 8004406667054620955
+      RedKnightTower-Sheet_1: -7369534057963633373
+      RedKnightTower-Sheet_10: 7844880350711205638
+      RedKnightTower-Sheet_11: -7443118998133783234
+      RedKnightTower-Sheet_12: -1364906019597734963
+      RedKnightTower-Sheet_13: -4691413910730428352
+      RedKnightTower-Sheet_14: -962384681701062461
+      RedKnightTower-Sheet_15: -6559938171608193493
+      RedKnightTower-Sheet_16: 793246848756532556
+      RedKnightTower-Sheet_2: 7979200824765697391
+      RedKnightTower-Sheet_3: -10334300524085503
+      RedKnightTower-Sheet_4: -9180305138554146206
+      RedKnightTower-Sheet_5: 9184704026369990144
+      RedKnightTower-Sheet_6: 1933522182236873658
+      RedKnightTower-Sheet_7: -458706472650899054
+      RedKnightTower-Sheet_8: -1896074708240848710
+      RedKnightTower-Sheet_9: 6555199952151047766
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
