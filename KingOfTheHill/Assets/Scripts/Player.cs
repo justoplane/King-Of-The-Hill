@@ -7,5 +7,19 @@ public class Player : MonoBehaviour
     UpgradeManager upgradeManager;
     List<Unit> units;
     List<Tower> towers;
+    Utils.Role role;
 
+    public List<Unit> getUnits()
+    {
+        return units;
+    }
+    public List<Tower> getTowers()
+    {
+        return towers;
+    }
+
+    public Utils.Role getRole()
+    {
+        return role;
+    }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Tower : Entity
 {
-    private Utils.TargetPriority targetPriority;
+    protected Utils.TargetPriority targetPriority;
 
     private void Start()
     {
