@@ -3,14 +3,15 @@ using System.Collections.Generic;
 
 public class MageTower : Tower
 {
-
     public List<Unit> unitsInRange;
+    public Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         unitsInRange = new List<Unit>();
         damage = 1;
         attackSpeed = 5;
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -19,15 +20,17 @@ public class MageTower : Tower
         timeSinceLastAttack += Time.deltaTime;
         if(active == true && unitsInRange.Count > 0 && CanAttack()){
             if(target != null){
+                animator.SetBool("isAttacking", true);
                 timeSinceLastAttack = 0;
                 target.TakeDamage(GetDamage());
             }
+        } else {
+            animator.SetBool("isAttacking", false);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("ENTERD TOWER COLLIDER");
         if(other.gameObject.tag == "Unit"){
             unitsInRange.Add(other.gameObject.GetComponent<Unit>());
         }
