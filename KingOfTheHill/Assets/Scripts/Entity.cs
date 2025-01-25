@@ -3,49 +3,53 @@ using System.Collections.Generic;
 
 public class Entity : MonoBehaviour
 {
-    protected string name;
     protected int health;
     protected int damage;
-    protected float attackSpeed;
-    protected double timeSinceLastAttack;
-    protected int range;
     protected bool active;
     protected Utils.DamageType damageType;
     protected List<Upgrade> upgrades;
     protected Entity target;
+    protected float attackCooldown;
+    protected float lastAttackTime;
 
-    public bool canAttack()
-    {
-        return true; // TODO: Implement attack cooldown 
+    public bool CanAttack() {
+        if (!IsActive()) {
+            return false;
+        }
+
+        if (Time.time < lastAttackTime + attackCooldown) {
+            return false;
+        }
+
+        lastAttackTime = Time.time;
+        return true;
     }
-    public void doAnimation()
-    {
+    public void DoAnimation() {
         // Play attack animation
     }
 
-    public bool isActive()
-    {
+    public bool IsActive() {
         return active;
     }
 
-    public Entity getTarget()
-    {
+    public Entity GetTarget() {
         return target;
     }
 
-    public int getDamage()
-    {
+    public int GetDamage() {
         // TODO: Calculate damage based on upgrades
         return damage;
     }
 
-    public void takeDamage(int damageTaken)
-    {
+    public void TakeDamage(int damageTaken) {
         health -= damageTaken;
     }
 
-    public int getHealth()
-    {
+    public int GetHealth() {
         return health;
+    }
+
+    public void Die() {
+        Destroy(gameObject);
     }
 }

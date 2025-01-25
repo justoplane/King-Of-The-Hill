@@ -29,15 +29,15 @@ public class Spawner : MonoBehaviour
         {
             case Utils.Role.Attacker:
                 result = Instantiate(Red_Knight, path.waypoints[0]);
-                result.GetComponent<Knight>().setPath(path);
+                result.GetComponent<Knight>().SetPath(path);
                 return result;
             case Utils.Role.Defender:
                 result = Instantiate(Blue_Knight, path.waypoints[0]);
-                result.GetComponent<Knight>().setPath(path);
+                result.GetComponent<Knight>().SetPath(path);
                 return result;
             default:
                 result = Instantiate(Red_Knight, path.waypoints[0]);
-                result.GetComponent<Knight>().setPath(path);
+                result.GetComponent<Knight>().SetPath(path);
                 return result;
         }
     }
@@ -49,15 +49,15 @@ public class Spawner : MonoBehaviour
         {
             case Utils.Role.Attacker:
                 result = Instantiate(Red_Mage, path.waypoints[0]);
-                result.GetComponent<Mage>().setPath(path);
+                result.GetComponent<Mage>().SetPath(path);
                 return result;
             case Utils.Role.Defender:
                 result = Instantiate(Blue_Mage, path.waypoints[0]);
-                result.GetComponent<Mage>().setPath(path);
+                result.GetComponent<Mage>().SetPath(path);
                 return result;
             default:
                 result = Instantiate(Red_Mage, path.waypoints[0]);
-                result.GetComponent<Mage>().setPath(path);
+                result.GetComponent<Mage>().SetPath(path);
                 return result;
         }
     }
