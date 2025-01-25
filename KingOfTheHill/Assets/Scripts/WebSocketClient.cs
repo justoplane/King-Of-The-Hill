@@ -56,14 +56,10 @@ public class WebSocketClient {
         };
         await SendWsMessage(message);
     }
-    public async Task SendUnitMove(Unit unit) {
+    public async Task SendUnitMove(uint unitId, Coordinate destination) {
         UnitMoveData data = new() {
-            unit = unit,
-            destination = new Coordinate() {
-                x = unit.transform.position.x,
-                y = unit.transform.position.y,
-                rotation = unit.transform.rotation.eulerAngles.z
-            }
+            unitId = unitId,
+            destination = destination,           
         };
         WSMessage message = new() {
             type = MessageType.UnitMove,
@@ -161,11 +157,11 @@ class UnitDeathData {
 }
 
 class UnitMoveData {
-    public Unit unit;
+    public uint unitId;
     public Coordinate destination;
 }
 
-class Coordinate {
+public class Coordinate {
     public float x;
     public float y;
     public float rotation;
