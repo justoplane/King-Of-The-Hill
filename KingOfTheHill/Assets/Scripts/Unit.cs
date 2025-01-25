@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class Unit : Entity
 {
-    int movementSpeed;
+    protected int movementSpeed;
 
     private void Start()
     {
-        
+
     }
+
 }
