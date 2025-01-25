@@ -1,48 +1,22 @@
 using System;
 using System.Net.WebSockets;
-using System.Reflection.Metadata;
+using System.Threading.Tasks;
 using System.Text;
-using System.Text.Json;
+using System.Threading;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
-class WebSocketClient {
+
+public class WebSocketClient {
     private ClientWebSocket? webSocket;
     private string serverUri;
-    static async Task Main(string[] args) {
-        uint port = 8080;
-        for (int i = 0; i < args.Length; i++) {
-            string arg = args[i];
-            if (arg.StartsWith("--port")) {
-                port = uint.Parse(args[i+1]);
-            } else if (arg.StartsWith("-P")) {
-                port = uint.Parse(args[i+1]);
-            }
-        }
-
-        string serverUri = "ws://localhost:" + port + "/ws";
-        using (ClientWebSocket webSocket = new ClientWebSocket()) {
-            try {
-                Console.WriteLine("Connecting to server at " + serverUri);
-                await webSocket.ConnectAsync(new Uri(serverUri), CancellationToken.None);
-                Console.WriteLine("Connected to server.");
-
-                while(true) {
-                    string response = await ReceiveMessage(webSocket);
-                    Console.WriteLine($"Received message: {response}");
-                }
-
-            } catch (Exception ex) {
-                Console.WriteLine($"Exception: {ex.Message}");
-            }
-        }
-    }
-
-    WebSocketClient(string url, uint port) {
+    public WebSocketClient(string url, uint port) {
         string serverUri = "ws://" + url + ":" + port + "/ws";
         this.serverUri = serverUri;
         this.webSocket = new ClientWebSocket();
     }
 
-    async Task Connect() {
+    public async Task Connect() {
         if (webSocket == null) {
             throw new Exception("WebSocket is not initialized.");
         }
@@ -55,7 +29,7 @@ class WebSocketClient {
         };
         WSMessage message = new() {
             type = MessageType.UnitPlaced,
-            data = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(data))
+            data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data))
         };
         await SendWsMessage(message);
     }
@@ -67,7 +41,7 @@ class WebSocketClient {
         };
         WSMessage message = new() {
             type = MessageType.UnitAttack,
-            data = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(data))
+            data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data))
         };
         await SendWsMessage(message);
     }
@@ -78,7 +52,7 @@ class WebSocketClient {
         };
         WSMessage message = new() {
             type = MessageType.UnitDeath,
-            data = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(data))
+            data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data))
         };
         await SendWsMessage(message);
     }
@@ -93,7 +67,7 @@ class WebSocketClient {
         };
         WSMessage message = new() {
             type = MessageType.UnitMove,
-            data = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(data))
+            data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data))
         };
         await SendWsMessage(message);
     }
@@ -104,7 +78,7 @@ class WebSocketClient {
         };
         WSMessage message = new() {
             type = MessageType.TowerPlaced,
-            data = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(data))
+            data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data))
         };
         await SendWsMessage(message);
     }
@@ -116,7 +90,7 @@ class WebSocketClient {
         };
         WSMessage message = new() {
             type = MessageType.UnitAttack,
-            data = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(data))
+            data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data))
         };
         await SendWsMessage(message);
     }
@@ -127,7 +101,7 @@ class WebSocketClient {
         };
         WSMessage message = new() {
             type = MessageType.BarrierBroken,
-            data = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(data))
+            data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data))
         };
         await SendWsMessage(message);
     }
@@ -147,7 +121,7 @@ class WebSocketClient {
                 type = message.TypeToString(),
                 data = message.data,
             };
-            byte[] buffer = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(serializableMessage));
+            byte[] buffer = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(serializableMessage));
             await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
         } else {
             Console.WriteLine("WebSocket is not connected.");
@@ -174,21 +148,21 @@ enum MessageType {
 }
 
 class UnitPlacedData {
-    public required Unit unit;
+    public Unit unit;
 }
 
 class UnitAttackData {
-    public required Unit attacker;
-    public required Tower target;
+    public Unit attacker;
+    public Tower target;
 }
 
 class UnitDeathData {
-    public required Unit unit;
+    public Unit unit;
 }
 
 class UnitMoveData {
-    public required Unit unit;
-    public required Coordinate destination;
+    public Unit unit;
+    public Coordinate destination;
 }
 
 class Coordinate {
@@ -198,29 +172,29 @@ class Coordinate {
 }
 
 class TowerPlacedData {
-    public required Tower tower;
+    public Tower tower;
 }
 
 class TowerAttackData {
-    public required Tower attacker;
-    public required Unit target;
+    public Tower attacker;
+    public Unit target;
 }
 
 class BarrierBrokenData {
-    public required Tower barrier;
+    public Tower barrier;
 }
 
 class GameStateSyncData {
     public uint FloorNumber;
     public uint WaveNumber;
     public uint Phase;
-    public required List<Tower> Towers;
-    public required List<Unit> Units;
+    public List<Tower> Towers;
+    public List<Unit> Units;
 }
 
 class WSMessage {
     public MessageType type;
-    public required byte[] data;
+    public byte[] data;
 
     private static readonly Dictionary<MessageType, string> enumToStringMap = new() {
         { MessageType.UnitPlaced, "unitPlaced" },
